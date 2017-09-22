@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户注册</title>
+</head>
+<body>
+<div class="form-wrapper">
+    <h3>用户注册</h3>
+    {% for error in errors %}
+    <p><small>{{ error }}</small></p>
+    {% endfor %}
+    {% if error %}
+    <p><small>{{ error }}</small></p>
+    {% endif %}
+    {% if msg %}
+    <p><small>{{ msg }}</small></p>
+    {% endif %}
+    <form action="{{ path_for('user.registerTo') }}" method="post">
+        <p>
+            <label>账号</label>
+            <input type="text" name="username">
+        </p>
+        <p>
+            <label>密码</label>
+            <input type="password" name="password">
+        </p>
+        <p>
+            <label>重复密码</label>
+            <input type="password" name="password1">
+        </p>
+        <input type="hidden" name="{{ csrf.TokenNameKey }}" value="{{ csrf.TokenName }}">
+        <input type="hidden" name="{{ csrf.TokenValueKey }}" value="{{ csrf.TokenValue }}">
+        <p>
+            <input type="submit" value="立即注册">
+        </p>
+    </form>
+</div>
+</body>
+</html>

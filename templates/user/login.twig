@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+</head>
+<body>
+    {% for error in errors %}
+        * {{ error }}
+    {% endfor %}
+    <div class="form-wrapper">
+        <h3>用户登录</h3>
+        <form action="{{ path_for('user.loginTo') }}" method="post">
+            <p>
+                <label>账号</label>
+                <input type="text" name="username">
+            </p>
+            <p>
+                <label>密码</label>
+                <input type="password" name="password">
+            </p>
+            <input type="hidden" name="{{ csrf.TokenNameKey }}" value="{{ csrf.TokenName }}">
+            <input type="hidden" name="{{ csrf.TokenValueKey }}" value="{{ csrf.TokenValue }}">
+            <p>
+                <input type="submit" value="登录">
+            </p>
+        </form>
+    </div>
+</body>
+</html>
